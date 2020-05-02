@@ -6,6 +6,9 @@
     </head>
     <body>
         <script>
+            let playerScore;
+            let computerScore;
+
             function computerPlay() {
                 shapeNum = Math.floor(Math.random() * 3)
                 if (shapeNum == 0) {
@@ -27,10 +30,12 @@
                     (playerSelection == "Rock" && computerSelection == "Scissors") ||
                     (playerSelection == "Paper" && computerSelection == "Rock") ||
                     (playerSelection == "Scissors" && computerSelection == "Papers")) {
+                        playerScore += 1;
                         return `You win! ${playerSelection} beats ${computerSelection}`;
                 }
                 else {
-                    return `You lose! ${computerSelection} beats ${playerSelection}`;
+                    computerScore += 1;
+                    return `You lose! ${computerSelection} beats ${playerSelection}`;  
                 }
             }
 
