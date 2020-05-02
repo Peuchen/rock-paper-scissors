@@ -33,18 +33,18 @@
                 console.log(computerSelection);
 
                 if (playerSelection == computerSelection) {
-                    console.log("It's a draw!");
+                    alert("It's a draw!");
                 } 
                 else if (
                     (playerSelection == "Rock" && computerSelection == "Scissors") ||
                     (playerSelection == "Paper" && computerSelection == "Rock") ||
                     (playerSelection == "Scissors" && computerSelection == "Papers")) {
                         playerScore += 1;
-                        console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+                        alert(`You win! ${playerSelection} beats ${computerSelection}`);
                 }
                 else {
                     computerScore += 1;
-                    console.log(`You lose! ${computerSelection} beats ${playerSelection}`);  
+                    alert(`You lose! ${computerSelection} beats ${playerSelection}`);  
                 }
             }
 
@@ -67,21 +67,22 @@
                 playRound(playerSelection, computerSelection);
                 console.log(interimScore());
                 playRound(playerSelection, computerSelection);
+                console.log(interimScore());
                 console.log(result());
 
                 function interimScore() {
-                    console.log(`It's ${playerScore} against ${computerScore}`)
+                    alert(`It's ${playerScore} against ${computerScore}`)
                 }
 
                 function result() {}
                     if (playerScore > computerScore) {
-                        return "Congratulations! You've won!";
+                        alert("Congratulations! You've won!");
                     }
                     else if (playerScore < computerScore) {
-                        return "You've lost :(";
+                        alert("You've lost :(");
                     }
                     else {
-                        return "It's a draw! No one wins"
+                        alert("It's a draw! No one wins");
                     }
                 }
 
