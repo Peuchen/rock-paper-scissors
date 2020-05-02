@@ -19,12 +19,21 @@
                 }
             }
 
-            function playRound(playerSelection.toLowerCase(), computerSelection.toLowerCase()) {
-                if (playerSelection == computerSelection {
+            function playRound(playerSelection, computerSelection) {
+                if (playerSelection == computerSelection) {
                     return "It's a draw!";
                 } 
-                else if (playerSelection)
+                else if (
+                    (playerSelection == "Rock" && computerSelection == "Scissors") ||
+                    (playerSelection == "Paper" && computerSelection == "Rock") ||
+                    (playerSelection == "Scissors" && computerSelection == "Papers")) {
+                        return `You win! ${playerSelection} beats ${computerSelection}`;
+                }
+                else {
+                    return `You lose! ${computerSelection} beats ${playerSelection}`;
+                }
             }
+        
         </script>
     </body>
 </html>
