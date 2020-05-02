@@ -33,6 +33,15 @@
                     return `You lose! ${computerSelection} beats ${playerSelection}`;
                 }
             }
+
+            function capitalize(input) {
+                if (typeof input == "string") {
+                   return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
+                }
+                else {
+                    return "You did not enter a string";
+                }
+            }
         
         </script>
     </body>
