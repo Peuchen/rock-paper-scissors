@@ -5,6 +5,7 @@
         <meta charset="UTF-8"/>
     </head>
     <body>
+        <h2>Rock, paper or scissors?</h2>
         <button id="rock">Rock</button>
         <button id="paper">Paper</button>
         <button id="scissors">Scissors</button>
@@ -15,6 +16,10 @@
 
             let playerScore = 0;
             let computerScore = 0;
+
+            const rock = document.querySelector('#rock');
+            const paper = document.querySelector('#paper');
+            const scissors = document.querySelector('#scissors');
 
             function computerPlay() {
                 shapeNum = Math.floor(Math.random() * 3)
@@ -30,7 +35,7 @@
             }
 
             function playRound(playerSelection, computerSelection) {
-                playerSelection = capitalize(prompt("Rock, paper or scissors?"));
+                playerSelection = capitalize(prompt());
                 computerSelection = computerPlay();
 
                 console.log(playerSelection);
