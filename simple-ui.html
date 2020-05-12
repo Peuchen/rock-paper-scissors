@@ -5,6 +5,10 @@
         <meta charset="UTF-8"/>
     </head>
     <body>
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+
         <script>
             let playerSelection;
             let computerSelection;
@@ -53,19 +57,7 @@
             }
 
             function game() {
-                playRound(playerSelection, computerSelection);
-                console.log(interimScore());
-                playRound(playerSelection, computerSelection);
-                console.log(interimScore());
-                playRound(playerSelection, computerSelection);
-                console.log(interimScore());
-                playRound(playerSelection, computerSelection);
-                console.log(interimScore());
-                playRound(playerSelection, computerSelection);
-                console.log(interimScore());
-                console.log(result());
-
-                function interimScore() {
+                    function interimScore() {
                     alert(`It's ${playerScore} against ${computerScore}`)
                 }
 
