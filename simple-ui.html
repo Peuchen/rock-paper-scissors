@@ -10,7 +10,7 @@
         <button id="paper">Paper</button>
         <button id="scissors">Scissors</button>
 
-        <div id="gameProgress"></div>
+        <div id="game-progress"></div>
 
         <script>
             let playerSelection;
@@ -19,6 +19,9 @@
             let playerScore = 0;
             let computerScore = 0;
 
+            const gameProgress = document.querySelector('#game-progress');
+            const content = document.createElement('p');
+            
             function selectShape() {
                 const rock = document.querySelector('#rock');
                 rock.addEventListener('click', () => {
@@ -50,6 +53,8 @@
             function playRound(playerSelection, computerSelection) {
                 playerSelection = selectShape();
                 computerSelection = computerPlay();
+
+            gameProgress.appendChild(content);
 
                 console.log(playerSelection);
                 console.log(computerSelection);
