@@ -80,9 +80,9 @@
             }
 
             function game() {
-                 playRound();
+                playRound();
 
-                    function interimScore() {
+                function interimScore() {
                     alert(`It's ${playerScore} against ${computerScore}`)
                 }
 
@@ -98,7 +98,12 @@
                     }
                 }
 
-            game();
+                const buttons = document.querySelectorAll('button');
+                buttons.forEach((button) => {
+                    button.addEventListener('click', (e) => {
+                        game();
+                    });
+                });
         
         </script>
     </body>
