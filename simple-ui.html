@@ -65,18 +65,23 @@
                 gameProgress.appendChild(content);
 
                 if (playerSelection == computerSelection) {
-                    alert(`It's a draw! Your opponent also used ${computerSelection}`);
+                    content.textContent = `It's a draw! Your opponent
+                        also used ${computerSelection}`;
+                    gameProgress.appendChild(content);
                 } 
                 else if (
                     (playerSelection == "Rock" && computerSelection == "Scissors") ||
                     (playerSelection == "Paper" && computerSelection == "Rock") ||
                     (playerSelection == "Scissors" && computerSelection == "Papers")) {
                         playerScore += 1;
-                        alert(`You win! ${playerSelection} beats ${computerSelection}`);
+                    content.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+                    gameProgress.appendChild(content);
+        
                 }
                 else {
                     computerScore += 1;
-                    alert(`You lose! ${computerSelection} beats ${playerSelection}`);  
+                    content.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+                    gameProgress.appendChild(content);
                 }
             }
 
