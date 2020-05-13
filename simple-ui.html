@@ -17,22 +17,21 @@
             let playerScore = 0;
             let computerScore = 0;
 
-            const rock = document.querySelector('#rock');
-            rock.addEventListener('click', () => {
-                playerSelection = "Rock";
-                console.log(playerSelection);
-            });
-            const paper = document.querySelector('#paper');
-            paper.addEventListener('click', () => {
-                playerSelection = "Paper";
-                console.log(playerSelection);
-            });
-            const scissors = document.querySelector('#scissors');
-            scissors.addEventListener('click', () => {
-                playerSelection = "Scissors";
-                console.log(playerSelection);
-            });
-
+            function selectShape() {
+                const rock = document.querySelector('#rock');
+                rock.addEventListener('click', () => {
+                    return playerSelection = "Rock";
+                });
+                const paper = document.querySelector('#paper');
+                paper.addEventListener('click', () => {
+                    return playerSelection = "Paper";
+                });
+                const scissors = document.querySelector('#scissors');
+                scissors.addEventListener('click', () => {
+                    returnplayerSelection = "Scissors";
+                });
+            }
+            
             function computerPlay() {
                 shapeNum = Math.floor(Math.random() * 3)
                 if (shapeNum == 0) {
@@ -47,7 +46,7 @@
             }
 
             function playRound(playerSelection, computerSelection) {
-                playerSelection = capitalize(prompt());
+                playerSelection = selectShape();
                 computerSelection = computerPlay();
 
                 console.log(playerSelection);
