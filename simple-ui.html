@@ -54,10 +54,10 @@
                 playerSelection = selectShape();
                 computerSelection = computerPlay();
 
-            gameProgress.appendChild(content);
-
-                console.log(playerSelection);
-                console.log(computerSelection);
+                content.classList.add('content');
+                content.textContent = `You have chosen ${playerSelection}
+                    and your opponent has chosen ${computerSelection}`;
+                gameProgress.appendChild(content);
 
                 if (playerSelection == computerSelection) {
                     alert(`It's a draw! Your opponent also used ${computerSelection}`);
@@ -80,6 +80,8 @@
             }
 
             function game() {
+                 playRound();
+
                     function interimScore() {
                     alert(`It's ${playerScore} against ${computerScore}`)
                 }
@@ -96,7 +98,7 @@
                     }
                 }
 
-            console.log(game());
+            game();
         
         </script>
     </body>
