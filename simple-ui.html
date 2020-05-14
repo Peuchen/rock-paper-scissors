@@ -60,13 +60,11 @@
                 computerSelection = computerPlay();
 
                 content.classList.add('content');
-                content.textContent = `You have chosen ${playerSelection}
-                    and your opponent has chosen ${computerSelection}`;
-                gameProgress.appendChild(content);
 
                 if (playerSelection == computerSelection) {
-                    content.textContent = `It's a draw! Your opponent
-                        also used ${computerSelection}`;
+                    content.textContent = `You have chosen ${playerSelection}
+                    and your opponent has chosen ${computerSelection}. It's a draw!
+                    The score 'you vs. computer' is ${playerScore}-${computerScore}`;
                     gameProgress.appendChild(content);
                 } 
                 else if (
@@ -74,13 +72,16 @@
                     (playerSelection == "Paper" && computerSelection == "Rock") ||
                     (playerSelection == "Scissors" && computerSelection == "Papers")) {
                         playerScore += 1;
-                    content.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+                    content.textContent = `You have chosen ${playerSelection}
+                    and your opponent has chosen ${computerSelection}. You win!
+                    The score 'you vs. computer' is ${playerScore}-${computerScore}`;
                     gameProgress.appendChild(content);
-        
                 }
                 else {
                     computerScore += 1;
-                    content.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+                    content.textContent = `You have chosen ${playerSelection}
+                    and your opponent has chosen ${computerSelection}. You lose!
+                    The score 'you vs. computer' is ${playerScore}-${computerScore}`;
                     gameProgress.appendChild(content);
                 }
             }
