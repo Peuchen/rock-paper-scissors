@@ -62,12 +62,10 @@
                 playerSelection = shape;
                 computerSelection = selectComputerShape();
 
-                content.classList.add('content');
-
                 if (playerSelection == computerSelection) {
                     content.textContent = `You have chosen ${playerSelection}
-                    and your opponent has chosen ${computerSelection}. It's a draw!
-                    The score 'you vs. computer' is ${playerScore}-${computerScore}`;
+                        and your opponent has chosen ${computerSelection}. It's a draw!
+                        The score 'you vs. computer' is ${playerScore}-${computerScore}`;
                     gameProgress.appendChild(content);
                 } 
                 else if (
@@ -76,15 +74,15 @@
                     (playerSelection == "Scissors" && computerSelection == "Paper")) {
                         playerScore += 1;
                     content.textContent = `You have chosen ${playerSelection}
-                    and your opponent has chosen ${computerSelection}. You win!
-                    The score 'you vs. computer' is ${playerScore}-${computerScore}`;
+                        and your opponent has chosen ${computerSelection}. You win!
+                        The score 'you vs. computer' is ${playerScore}-${computerScore}`;
                     gameProgress.appendChild(content);
                 }
                 else {
                     computerScore += 1;
                     content.textContent = `You have chosen ${playerSelection}
-                    and your opponent has chosen ${computerSelection}. You lose!
-                    The score 'you vs. computer' is ${playerScore}-${computerScore}`;
+                        and your opponent has chosen ${computerSelection}. You lose!
+                        The score 'you vs. computer' is ${playerScore}-${computerScore}`;
                     gameProgress.appendChild(content);
                 }
             }
