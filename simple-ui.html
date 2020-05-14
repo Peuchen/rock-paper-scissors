@@ -22,6 +22,7 @@
 
             const gameProgress = document.querySelector('#game-progress');
             const content = document.createElement('p');
+            const result = document.createElement('p');
             
             const rock = document.querySelector('#rock');
             rock.addEventListener('click', () => {
@@ -41,20 +42,20 @@
                 shape = "Scissors";
             });
             
-            
-            function computerPlay() {
-                shapeNum = Math.floor(Math.random() * 3)
-                if (shapeNum == 0) {
-                    return "Rock";
-                }
-                else if (shapeNum == 1) {
-                    return "Paper";
-                }
-                else {
-                    return "Scissors"
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach((button) => {
+                button.addEventListener('click', (e) => {
+                    game();
+                });
+            });
+
+            function game() {
+                playRound();
+                if (playerScore == 5 || computerScore == 5) {
+                    showResult();
                 }
             }
-
+            
             function playRound(playerSelection, computerSelection) {
                 playerSelection = shape;
                 computerSelection = computerPlay();
@@ -86,23 +87,30 @@
                 }
             }
 
+            function computerPlay() {
+                shapeNum = Math.floor(Math.random() * 3)
+                if (shapeNum == 0) {
+                    return "Rock";
+                }
+                else if (shapeNum == 1) {
+                    return "Paper";
+                }
+                else {
+                    return "Scissors"
+                }
+            }
+
             function capitalize(input) {
                 return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
             }
 
-            function game() {
-                playRound();
-                if (playerScore == 5 || computerScore == 5) {
-                    showResult();
-                }
-            }
+
           
             function interimScore() {
                 alert(`It's ${playerScore} against ${computerScore}`)
             }
 
             function showResult() {
-                const result = document.createElement('p');
                 if (playerScore > computerScore) {
                     result.textContent = "Congratulations! You've won!";
                     gameProgress.appendChild(result);
@@ -141,16 +149,7 @@
                         button.removeAttribute('disabled');
                     });
                 });
-            }
-
-            const buttons = document.querySelectorAll('button');
-            buttons.forEach((button) => {
-                button.addEventListener('click', (e) => {
-                    game();
-                });
-            });
-        
-            
+            }    
         </script>
     </body>
 </html>
