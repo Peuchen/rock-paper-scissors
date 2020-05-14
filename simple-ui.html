@@ -53,6 +53,8 @@
                 playRound();
                 if (playerScore == 5 || computerScore == 5) {
                     showResult();
+                    disableButtons();
+                    playAgain();
                 }
             }
             
@@ -109,16 +111,6 @@
                     result.textContent = "You've lost :(";
                     gameProgress.appendChild(result);
                 }
-                else {
-                    result.textContent = "It's a draw! No one wins";
-                    gameProgress.appendChild(result);
-                }
-
-                playerScore = 0;
-                computerScore = 0;
-
-                disableButtons();
-                playAgain();
             }
 
             function disableButtons() {
@@ -138,6 +130,8 @@
                     buttons.forEach((button) => {
                         button.removeAttribute('disabled');
                     });
+                    playerScore = 0;
+                    computerScore = 0;
                 });
             }    
         </script>
