@@ -93,7 +93,7 @@
             function game() {
                 playRound();
                 if (playerScore == 5 || computerScore == 5) {
-                    result();
+                    showResult();
                 }
             }
           
@@ -101,15 +101,19 @@
                 alert(`It's ${playerScore} against ${computerScore}`)
             }
 
-            function result() {
+            function showResult() {
+                const result = document.createElement('p');
                 if (playerScore > computerScore) {
-                    alert("Congratulations! You've won!");
+                    result.textContent = "Congratulations! You've won!";
+                    gameProgress.appendChild(result);
                 }
                 else if (playerScore < computerScore) {
-                    alert("You've lost :(");
+                    result.textContent = "You've lost :(";
+                    gameProgress.appendChild(result);
                 }
                 else {
-                    alert("It's a draw! No one wins");
+                    result.textContent = "It's a draw! No one wins";
+                    gameProgress.appendChild(result);
                 }
             }
 
