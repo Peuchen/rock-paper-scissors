@@ -120,11 +120,28 @@
                 computerScore = 0;
 
                 disableButtons();
+                playAgain();
 
                 function disableButtons() {
                     buttons.forEach((button) => {
                         button.setAttribute('disabled', 'true');
                     });
+                }
+
+                function playAgain() {
+                    const resetButton = document.createElement('button');
+                    resetButton.textContent = "Play again";
+                    gameProgress.appendChild(resetButton);
+                    resetButton.addEventListener('click', (e) => {
+                        gameProgress.removeChild(content);
+                        gameProgress.removeChild(result);
+                        gameProgress.removeChild(resetButton);
+                        buttons.forEach((button) => {
+                            button.removeAttribute('disabled');
+                        });
+                    });
+
+            
                 }
             }
 
@@ -135,6 +152,7 @@
                 });
             });
         
+            
         </script>
     </body>
 </html>
