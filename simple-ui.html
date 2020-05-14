@@ -70,7 +70,7 @@
                 else if (
                     (playerSelection == "Rock" && computerSelection == "Scissors") ||
                     (playerSelection == "Paper" && computerSelection == "Rock") ||
-                    (playerSelection == "Scissors" && computerSelection == "Papers")) {
+                    (playerSelection == "Scissors" && computerSelection == "Paper")) {
                         playerScore += 1;
                     content.textContent = `You have chosen ${playerSelection}
                     and your opponent has chosen ${computerSelection}. You win!
@@ -96,8 +96,6 @@
                     result();
                 }
             }
-                
-    
           
             function interimScore() {
                 alert(`It's ${playerScore} against ${computerScore}`)
