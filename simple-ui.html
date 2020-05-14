@@ -91,35 +91,34 @@
             }
 
             function game() {
-                while (playerScore < 5 || computerScore < 5) {
+                while (playerScore < 5 && computerScore < 5) {
                     playRound();
                 }
-
                 result();
-            };
+            }
+          
+            function interimScore() {
+                alert(`It's ${playerScore} against ${computerScore}`)
+            }
 
-                function interimScore() {
-                    alert(`It's ${playerScore} against ${computerScore}`)
+            function result() {
+                if (playerScore > computerScore) {
+                    alert("Congratulations! You've won!");
                 }
-
-                function result() {}
-                    if (playerScore > computerScore) {
-                        alert("Congratulations! You've won!");
-                    }
-                    else if (playerScore < computerScore) {
-                        alert("You've lost :(");
-                    }
-                    else {
-                        alert("It's a draw! No one wins");
-                    }
+                else if (playerScore < computerScore) {
+                    alert("You've lost :(");
                 }
+                else {
+                    alert("It's a draw! No one wins");
+                }
+            }
 
-                const buttons = document.querySelectorAll('button');
-                buttons.forEach((button) => {
-                    button.addEventListener('click', (e) => {
-                        game();
-                    });
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach((button) => {
+                button.addEventListener('click', (e) => {
+                    game();
                 });
+            });
         
         </script>
     </body>
