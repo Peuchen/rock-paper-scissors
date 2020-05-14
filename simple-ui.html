@@ -45,11 +45,11 @@
             const buttons = document.querySelectorAll('button');
             buttons.forEach((button) => {
                 button.addEventListener('click', (e) => {
-                    game();
+                    playGame();
                 });
             });
 
-            function game() {
+            function playGame() {
                 playRound();
                 if (playerScore == 5 || computerScore == 5) {
                     showResult();
@@ -58,7 +58,7 @@
             
             function playRound(playerSelection, computerSelection) {
                 playerSelection = shape;
-                computerSelection = computerPlay();
+                computerSelection = selectComputerShape();
 
                 content.classList.add('content');
 
@@ -87,7 +87,7 @@
                 }
             }
 
-            function computerPlay() {
+            function selectComputerShape() {
                 shapeNum = Math.floor(Math.random() * 3)
                 if (shapeNum == 0) {
                     return "Rock";
