@@ -6,9 +6,9 @@
     </head>
     <body>
         <h2>Rock, paper or scissors?</h2>
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
+        <button class="shape" id="rock">Rock</button>
+        <button class="shape" id="paper">Paper</button>
+        <button class="shape" id="scissors">Scissors</button>
 
         <div id="game-progress"></div>
 
@@ -118,6 +118,14 @@
 
                 playerScore = 0;
                 computerScore = 0;
+
+                disableButtons();
+
+                function disableButtons() {
+                    buttons.forEach((button) => {
+                        button.setAttribute('disabled', 'true');
+                    });
+                }
             }
 
             const buttons = document.querySelectorAll('button');
