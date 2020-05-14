@@ -5,14 +5,89 @@
         <meta charset="UTF-8"/>
     </head>
     <body>
+        <h2>Rock, paper or scissors?</h2>
+        <button class="shape" id="rock">Rock</button>
+        <button class="shape" id="paper">Paper</button>
+        <button class="shape" id="scissors">Scissors</button>
+
+        <div id="game-progress"></div>
+
         <script>
+            let shape;
             let playerSelection;
             let computerSelection;
 
             let playerScore = 0;
             let computerScore = 0;
 
-            function computerPlay() {
+            const gameProgress = document.querySelector('#game-progress');
+            const content = document.createElement('p');
+            const result = document.createElement('p');
+            
+            const rock = document.querySelector('#rock');
+            rock.addEventListener('click', () => {
+                console.log("Rock");
+                shape = "Rock";
+            });
+            
+            const paper = document.querySelector('#paper');
+            paper.addEventListener('click', () => {
+                console.log("Paper");
+                shape = "Paper";
+                });
+            
+            const scissors = document.querySelector('#scissors');
+            scissors.addEventListener('click', () => {
+                console.log("Scissors");
+                shape = "Scissors";
+            });
+            
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach((button) => {
+                button.addEventListener('click', (e) => {
+                    playGame();
+                });
+            });
+
+            function playGame() {
+                playRound();
+                if (playerScore == 5 || computerScore == 5) {
+                    showResult();
+                    disableButtons();
+                    playAgain();
+                }
+            }
+            
+            function playRound(playerSelection, computerSelection) {
+                playerSelection = shape;
+                computerSelection = selectComputerShape();
+
+                if (playerSelection == computerSelection) {
+                    content.textContent = `You have chosen ${playerSelection}
+                        and your opponent has chosen ${computerSelection}. It's a draw!
+                        The score 'you vs. computer' is ${playerScore}-${computerScore}`;
+                    gameProgress.appendChild(content);
+                } 
+                else if (
+                    (playerSelection == "Rock" && computerSelection == "Scissors") ||
+                    (playerSelection == "Paper" && computerSelection == "Rock") ||
+                    (playerSelection == "Scissors" && computerSelection == "Paper")) {
+                        playerScore += 1;
+                    content.textContent = `You have chosen ${playerSelection}
+                        and your opponent has chosen ${computerSelection}. You win!
+                        The score 'you vs. computer' is ${playerScore}-${computerScore}`;
+                    gameProgress.appendChild(content);
+                }
+                else {
+                    computerScore += 1;
+                    content.textContent = `You have chosen ${playerSelection}
+                        and your opponent has chosen ${computerSelection}. You lose!
+                        The score 'you vs. computer' is ${playerScore}-${computerScore}`;
+                    gameProgress.appendChild(content);
+                }
+            }
+
+            function selectComputerShape() {
                 shapeNum = Math.floor(Math.random() * 3)
                 if (shapeNum == 0) {
                     return "Rock";
@@ -25,64 +100,38 @@
                 }
             }
 
-            function playRound(playerSelection, computerSelection) {
-                playerSelection = capitalize(prompt("Rock, paper or scissors?"));
-                computerSelection = computerPlay();
-
-                console.log(playerSelection);
-                console.log(computerSelection);
-
-                if (playerSelection == computerSelection) {
-                    alert(`It's a draw! Your opponent also used ${computerSelection}`);
-                } 
-                else if (
-                    (playerSelection == "Rock" && computerSelection == "Scissors") ||
-                    (playerSelection == "Paper" && computerSelection == "Rock") ||
-                    (playerSelection == "Scissors" && computerSelection == "Papers")) {
-                        playerScore += 1;
-                        alert(`You win! ${playerSelection} beats ${computerSelection}`);
+            function showResult() {
+                if (playerScore > computerScore) {
+                    result.textContent = "Congratulations! You've won!";
+                    gameProgress.appendChild(result);
                 }
-                else {
-                    computerScore += 1;
-                    alert(`You lose! ${computerSelection} beats ${playerSelection}`);  
+                else if (playerScore < computerScore) {
+                    result.textContent = "You've lost :(";
+                    gameProgress.appendChild(result);
                 }
             }
 
-            function capitalize(input) {
-                return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
+            function disableButtons() {
+                buttons.forEach((button) => {
+                        button.setAttribute('disabled', 'true');
+                });
             }
 
-            function game() {
-                playRound(playerSelection, computerSelection);
-                console.log(interimScore());
-                playRound(playerSelection, computerSelection);
-                console.log(interimScore());
-                playRound(playerSelection, computerSelection);
-                console.log(interimScore());
-                playRound(playerSelection, computerSelection);
-                console.log(interimScore());
-                playRound(playerSelection, computerSelection);
-                console.log(interimScore());
-                console.log(result());
-
-                function interimScore() {
-                    alert(`It's ${playerScore} against ${computerScore}`)
-                }
-
-                function result() {}
-                    if (playerScore > computerScore) {
-                        alert("Congratulations! You've won!");
-                    }
-                    else if (playerScore < computerScore) {
-                        alert("You've lost :(");
-                    }
-                    else {
-                        alert("It's a draw! No one wins");
-                    }
-                }
-
-            console.log(game())
-        
+            function playAgain() {
+                const resetButton = document.createElement('button');
+                resetButton.textContent = "Play again";
+                gameProgress.appendChild(resetButton);
+                resetButton.addEventListener('click', (e) => {
+                    gameProgress.removeChild(content);
+                    gameProgress.removeChild(result);
+                    gameProgress.removeChild(resetButton);
+                    buttons.forEach((button) => {
+                        button.removeAttribute('disabled');
+                    });
+                    playerScore = 0;
+                    computerScore = 0;
+                });
+            }    
         </script>
     </body>
 </html>

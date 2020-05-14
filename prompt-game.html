@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <script>
+            let playerSelection;
+            let computerSelection;
+
+            let playerScore = 0;
+            let computerScore = 0;
+
+            function computerPlay() {
+                shapeNum = Math.floor(Math.random() * 3)
+                if (shapeNum == 0) {
+                    return "Rock";
+                }
+                else if (shapeNum == 1) {
+                    return "Paper";
+                }
+                else {
+                    return "Scissors"
+                }
+            }
+
+            function playRound(playerSelection, computerSelection) {
+                playerSelection = capitalize(prompt("Rock, paper or scissors?"));
+                computerSelection = computerPlay();
+
+                console.log(playerSelection);
+                console.log(computerSelection);
+
+                if (playerSelection == computerSelection) {
+                    alert(`It's a draw! Your opponent also used ${computerSelection}`);
+                } 
+                else if (
+                    (playerSelection == "Rock" && computerSelection == "Scissors") ||
+                    (playerSelection == "Paper" && computerSelection == "Rock") ||
+                    (playerSelection == "Scissors" && computerSelection == "Papers")) {
+                        playerScore += 1;
+                        alert(`You win! ${playerSelection} beats ${computerSelection}`);
+                }
+                else {
+                    computerScore += 1;
+                    alert(`You lose! ${computerSelection} beats ${playerSelection}`);  
+                }
+            }
+
+            function capitalize(input) {
+                return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
+            }
+
+            function game() {
+                playRound(playerSelection, computerSelection);
+                console.log(interimScore());
+                playRound(playerSelection, computerSelection);
+                console.log(interimScore());
+                playRound(playerSelection, computerSelection);
+                console.log(interimScore());
+                playRound(playerSelection, computerSelection);
+                console.log(interimScore());
+                playRound(playerSelection, computerSelection);
+                console.log(interimScore());
+                console.log(result());
+
+                function interimScore() {
+                    alert(`It's ${playerScore} against ${computerScore}`)
+                }
+
+                function result() {}
+                    if (playerScore > computerScore) {
+                        alert("Congratulations! You've won!");
+                    }
+                    else if (playerScore < computerScore) {
+                        alert("You've lost :(");
+                    }
+                    else {
+                        alert("It's a draw! No one wins");
+                    }
+                }
+
+            console.log(game())
+        
+        </script>
+    </body>
+</html>
