@@ -91,7 +91,12 @@
             }
 
             function game() {
-                playRound();
+                while (playerScore < 5 || computerScore < 5) {
+                    playRound();
+                }
+
+                result();
+            };
 
                 function interimScore() {
                     alert(`It's ${playerScore} against ${computerScore}`)
